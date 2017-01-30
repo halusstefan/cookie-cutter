@@ -3,6 +3,7 @@ package com.adamstyrc.cookiecutter;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Path;
+import android.graphics.RectF;
 
 /**
  * Created by adamstyrc on 04/04/16.
@@ -122,7 +123,9 @@ public class CookieCutterParams {
     }
 
     public class SquareParams {
+        Path path;
         Paint paint;
+        Paint pathPaint;
 
         public SquareParams() {
             paint = new Paint();
@@ -130,6 +133,15 @@ public class CookieCutterParams {
             paint.setColor(Color.WHITE);
             paint.setStrokeWidth(5);
             paint.setStyle(Paint.Style.STROKE);
+
+
+            pathPaint = new Paint();
+            pathPaint.setColor(Color.parseColor("#AA000000"));
+
+            path = new Path();
+            path.setFillType(Path.FillType.EVEN_ODD);
+            path.addRect(0, 0, width, height, Path.Direction.CW);
+            path.addRoundRect(new RectF(circle.getLeftBound(), circle.getTopBound(), circle.getRightBound(), circle.getBottomBound()), 0, 0, Path.Direction.CW);
         }
 
         public void setStrokeWidth(float strokeWidth) {

@@ -121,6 +121,7 @@ public class CookieCutterImageView extends ImageView {
             case SQUARE:
                 paint = cookieCutterParams.getSquareParams().paint;
                 canvas.drawRect(circle.getLeftBound(), circle.getTopBound(), circle.getRightBound(), circle.getBottomBound(), paint);
+                canvas.drawPath(cookieCutterParams.getSquareParams().path, cookieCutterParams.getSquareParams().pathPaint);
                 break;
         }
     }
